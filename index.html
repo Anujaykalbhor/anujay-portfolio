@@ -79,9 +79,10 @@
     }
     .btn:hover { transform:translateY(-4px); box-shadow:0 10px 25px rgba(0,114,255,0.3); }
 
-    .hero-socials { margin-top:2rem; display:flex; justify-content:center; gap:1.5rem; }
-    .hero-socials a { font-size:1.8rem; color:var(--text-muted-dark); transition:color .3s ease; }
+    .hero-socials { margin-top:2rem; display:flex; justify-content:center; gap:1.5rem; flex-wrap:wrap; }
+    .hero-socials a { font-size:1.1rem; color:var(--text-muted-dark); transition:color .3s ease; text-decoration:none; }
     .hero-socials a:hover { color:var(--primary-dark); }
+    .hero-socials i { margin-right:8px; }
 
     /* Skills */
     .skills-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.5rem; }
@@ -105,8 +106,8 @@
       transition:transform .3s ease, box-shadow .3s ease;
       display:flex; flex-direction:column;
     }
-    .project-card:hover { transform:translateY(-6px); box-shadow:0 12px 25px rgba(0,0,0,.35); }
-    .project-card img { height:200px; object-fit:cover; }
+    .project-card:hover { transform:translateY(-6px); box-shadow:0 12px 25px rgba(0,0,0,0.35); }
+    .project-card img { height:200px; object-fit:cover; width:100%; }
     .project-content { padding:1.5rem; display:flex; flex-direction:column; flex-grow:1; }
     .project-tags { display:flex; flex-wrap:wrap; gap:.5rem; margin:1rem 0; }
     .project-tags span {
@@ -172,10 +173,10 @@
         <a href="resume.pdf" class="btn" download>Download Resume</a>
       </div>
       <div class="hero-socials">
-        <a href="https://github.com/Anujaykalbhor" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://linkedin.com/in/anujay-kalbhor" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="mailto:kalbhoranujay@gmail.com"><i class="fas fa-envelope"></i></a>
-        <a href="tel:+918007101616"><i class="fas fa-phone"></i></a>
+        <a href="https://github.com/Anujaykalbhor" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://linkedin.com/in/anujay-kalbhor" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="mailto:kalbhoranujay@gmail.com"><i class="fas fa-envelope"></i> kalbhoranujay@gmail.com</a>
+        <a href="tel:+918007101616"><i class="fas fa-phone"></i> +91 8007101616</a>
       </div>
     </div>
   </section>
@@ -321,69 +322,4 @@
   <section id="certificates">
     <div class="container">
       <h2 class="section-title">Certificates</h2>
-      <ul style="max-width:600px; margin:auto; list-style:none; line-height:1.8; font-size:1.1rem; text-align:center;">
-        <li><i class="fa fa-check-circle" style="color:var(--primary-dark); margin-right:8px;"></i>IBM SkillsBuild – Python for Programmers</li>
-        <li><i class="fa fa-check-circle" style="color:var(--primary-dark); margin-right:8px;"></i>CSRBOX – Data Analytics Internship Program</li>
-        <li><i class="fa fa-check-circle" style="color:var(--primary-dark); margin-right:8px;"></i>Fusion Software Institute – Data Science Course</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact">
-    <div class="container">
-      <h2 class="section-title">Get In Touch</h2>
-      <p style="text-align:center;">Feel free to reach out for collaboration, opportunities, or discussions about Data Science & AI.</p>
-      <div class="hero-socials">
-        <a href="mailto:kalbhoranujay@gmail.com"><i class="fas fa-envelope"></i></a>
-        <a href="https://linkedin.com/in/anujay-kalbhor" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/Anujaykalbhor" target="_blank"><i class="fab fa-github"></i></a>
-      </div>
-    </div>
-  </section>
-</main>
-
-<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-<script>
-  particlesJS("particles-js", {
-    particles: {
-      number: { value: 100 },
-      color: { value: "#00c6ff" },
-      shape: { type: "circle" },
-      opacity: { value: 0.5, random: true },
-      size: { value: 3, random: true },
-      line_linked: { enable: true, distance: 150, color: "#0072ff", opacity: 0.4, width: 1 },
-      move: { enable: true, speed: 2 }
-    }
-  });
-
-  const typingElement = document.getElementById("typing-text");
-  const textArray = ["Data Scientist", "Machine Learning Engineer", "AI Enthusiast", "Big Data Analyst"];
-  let arrayIndex = 0, charIndex = 0;
-
-  function type() {
-    if (charIndex < textArray[arrayIndex].length) {
-      typingElement.textContent += textArray[arrayIndex].charAt(charIndex);
-      charIndex++; setTimeout(type, 120);
-    } else { setTimeout(erase, 2000); }
-  }
-  function erase() {
-    if (charIndex > 0) {
-      typingElement.textContent = textArray[arrayIndex].substring(0, charIndex - 1);
-      charIndex--; setTimeout(erase, 50);
-    } else { arrayIndex = (arrayIndex + 1) % textArray.length; setTimeout(type, 500); }
-  }
-  document.addEventListener("DOMContentLoaded", type);
-
-  const themeToggle = document.getElementById("theme-toggle");
-  const body = document.body;
-  themeToggle.addEventListener("click", () => {
-    body.classList.toggle("light-mode");
-    themeToggle.innerHTML = body.classList.contains("light-mode")
-      ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-  });
-</script>
-</body>
-</html>
-
-
+      <ul style="max-width:600px; margin:auto
