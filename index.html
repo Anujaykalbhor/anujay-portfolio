@@ -235,7 +235,7 @@
       <h2 class="section-title">Featured Projects</h2>
       <div class="projects-grid">
         <div class="project-card">
-          <img src="stock.jpg" alt="Stock Prediction Project">
+          <img src="golden-bull-and-bear-on-stock-data-chart-ba…webp" alt="Stock Prediction Project">
           <div class="project-content">
             <h3>Stock Market Price Prediction</h3>
             <p>Developed an ML pipeline combining historical stock data with real-time news sentiment. Deployed on AWS EC2 with chatbot integration and Power BI dashboards.</p>
@@ -248,7 +248,7 @@
           </div>
         </div>
         <div class="project-card">
-          <img src="summarizer.jpg" alt="Text Summarization Project">
+          <img src="summarizer-step-three.webp" alt="Text Summarization Project">
           <div class="project-content">
             <h3>End-to-End Text Summarization</h3>
             <p>Implemented extractive & abstractive text summarization using transformer models. CI/CD via GitHub Actions, deployed on AWS with a real-time Streamlit interface.</p>
@@ -261,7 +261,7 @@
           </div>
         </div>
         <div class="project-card">
-          <img src="spark.jpg" alt="PySpark Project">
+          <img src="pyspark.webp" alt="PySpark Project">
           <div class="project-content">
             <h3>Stock Data Analysis & Forecasting</h3>
             <p>Analyzed Tata Motors stock data on Databricks using PySpark, generating forecasting insights and optimizing queries for performance.</p>
@@ -321,5 +321,67 @@
   <section id="certificates">
     <div class="container">
       <h2 class="section-title">Certificates</h2>
-      <ul style="max-width:600px; margin:auto; list-style:none; line-height:1.8; font-size:1.1rem;">
-        <li><i class="fa fa-check-circle" style="color:var(--primary-dark); margin-right:8px
+      <ul style="max-width:600px; margin:auto; list-style:none; line-height:1.8; font-size:1.1rem; text-align:center;">
+        <li><i class="fa fa-check-circle" style="color:var(--primary-dark); margin-right:8px;"></i>IBM SkillsBuild – Python for Programmers</li>
+        <li><i class="fa fa-check-circle" style="color:var(--primary-dark); margin-right:8px;"></i>CSRBOX – Data Analytics Internship Program</li>
+        <li><i class="fa fa-check-circle" style="color:var(--primary-dark); margin-right:8px;"></i>Fusion Software Institute – Data Science Course</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <p style="text-align:center;">Feel free to reach out for collaboration, opportunities, or discussions about Data Science & AI.</p>
+      <div class="hero-socials">
+        <a href="mailto:kalbhoranujay@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://linkedin.com/in/anujay-kalbhor" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/Anujaykalbhor" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+<script>
+  particlesJS("particles-js", {
+    particles: {
+      number: { value: 100 },
+      color: { value: "#00c6ff" },
+      shape: { type: "circle" },
+      opacity: { value: 0.5, random: true },
+      size: { value: 3, random: true },
+      line_linked: { enable: true, distance: 150, color: "#0072ff", opacity: 0.4, width: 1 },
+      move: { enable: true, speed: 2 }
+    }
+  });
+
+  const typingElement = document.getElementById("typing-text");
+  const textArray = ["Data Scientist", "Machine Learning Engineer", "AI Enthusiast", "Big Data Analyst"];
+  let arrayIndex = 0, charIndex = 0;
+
+  function type() {
+    if (charIndex < textArray[arrayIndex].length) {
+      typingElement.textContent += textArray[arrayIndex].charAt(charIndex);
+      charIndex++; setTimeout(type, 120);
+    } else { setTimeout(erase, 2000); }
+  }
+  function erase() {
+    if (charIndex > 0) {
+      typingElement.textContent = textArray[arrayIndex].substring(0, charIndex - 1);
+      charIndex--; setTimeout(erase, 50);
+    } else { arrayIndex = (arrayIndex + 1) % textArray.length; setTimeout(type, 500); }
+  }
+  document.addEventListener("DOMContentLoaded", type);
+
+  const themeToggle = document.getElementById("theme-toggle");
+  const body = document.body;
+  themeToggle.addEventListener("click", () => {
+    body.classList.toggle("light-mode");
+    themeToggle.innerHTML = body.classList.contains("light-mode")
+      ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+  });
+</script>
+</body>
+</html>
