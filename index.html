@@ -1,325 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Anujay Kalbhor | Data Scientist Portfolio</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --bg-dark: #0d1117;
-      --primary-dark: #00c6ff;
-      --secondary-dark: #0072ff;
-      --card-dark: #161b22;
-      --text-dark: #c9d1d9;
-      --text-muted-dark: #8b949e;
-      --border-dark: #30363d;
-
-      --bg-light: #ffffff;
-      --primary-light: #0072ff;
-      --secondary-light: #00c6ff;
-      --card-light: #f6f8fa;
-      --text-light: #24292f;
-      --text-muted-light: #57606a;
-      --border-light: #d0d7de;
-    }
-
-    * { margin:0; padding:0; box-sizing:border-box; scroll-behavior:smooth; }
-    body {
-      font-family: 'Roboto', sans-serif;
-      background: var(--bg-dark);
-      color: var(--text-dark);
-      transition: background .3s ease, color .3s ease;
-    }
-    body.light-mode { background: var(--bg-light); color: var(--text-light); }
-
-    h1,h2,h3 { font-family: 'Montserrat', sans-serif; }
-    .container { max-width: 1100px; margin:auto; padding:0 20px; }
-    section { padding:5rem 0; }
-
-    .section-title {
-      font-size: 2.8rem;
-      text-align: center;
-      margin-bottom: 3rem;
-      font-weight: bold;
-      background: linear-gradient(90deg,var(--primary-dark),var(--secondary-dark));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    /* Navbar */
-    header {
-      position:fixed; top:0; left:0; width:100%; z-index:1000;
-      background: rgba(13,17,23,0.85); backdrop-filter: blur(12px);
-      border-bottom:1px solid var(--border-dark);
-    }
-    nav { display:flex; justify-content:space-between; align-items:center; height:70px; }
-    .logo { font-size:1.6rem; font-weight:700; color:var(--primary-dark); text-decoration:none; }
-    .nav-links { display:flex; gap:2rem; list-style:none; }
-    .nav-links a { color: var(--text-muted-dark); text-decoration:none; font-weight:500; }
-    .nav-links a:hover { color: var(--primary-dark); }
-    #theme-toggle { background:none; border:none; font-size:1.5rem; cursor:pointer; color:var(--text-muted-dark); }
-
-    /* Hero */
-    #home { min-height:100vh; display:flex; align-items:center; text-align:center; position:relative; }
-    #particles-js { position:absolute; top:0; left:0; width:100%; height:100%; z-index:1; }
-    .hero-content { position:relative; z-index:2; }
-    .hero-content h1 { font-size:4.5rem; margin-bottom:1rem; }
-    .typing-text { font-size:1.6rem; color:var(--primary-dark); margin-bottom:2rem; font-weight:500; }
-    .hero-content p { max-width:650px; margin:auto; font-size:1.1rem; line-height:1.7; }
-
-    .btn {
-      display:inline-block; padding:1rem 2rem; border-radius:50px; font-weight:600;
-      color:white; text-decoration:none;
-      background: linear-gradient(90deg,var(--primary-dark),var(--secondary-dark));
-      transition: transform .3s ease, box-shadow .3s ease;
-    }
-    .btn:hover { transform:translateY(-4px); box-shadow:0 10px 25px rgba(0,114,255,0.3); }
-
-    .hero-socials { margin-top:2rem; display:flex; justify-content:center; gap:1.5rem; flex-wrap:wrap; }
-    .hero-socials a { font-size:1.1rem; color:var(--text-muted-dark); transition:color .3s ease; text-decoration:none; }
-    .hero-socials a:hover { color:var(--primary-dark); }
-    .hero-socials i { margin-right:8px; }
-
-    /* Skills */
-    .skills-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.5rem; }
-    .skill-category {
-      background: var(--card-dark); border:1px solid var(--border-dark);
-      border-radius:12px; padding:2rem;
-      box-shadow:0 4px 12px rgba(0,0,0,.2);
-    }
-    .skills-list { display:flex; flex-wrap:wrap; gap:.8rem; margin-top:1rem; }
-    .skills-list li {
-      list-style:none; font-size:.9rem; padding:.5rem 1rem; border-radius:50px;
-      background:linear-gradient(90deg,var(--primary-dark),var(--secondary-dark));
-      color:white; font-weight:500;
-    }
-
-    /* Projects */
-    .projects-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:2rem; }
-    .project-card {
-      background:var(--card-dark); border-radius:16px; overflow:hidden;
-      box-shadow:0 6px 15px rgba(0,0,0,0.3);
-      transition:transform .3s ease, box-shadow .3s ease;
-      display:flex; flex-direction:column;
-    }
-    .project-card:hover { transform:translateY(-6px); box-shadow:0 12px 25px rgba(0,0,0,0.35); }
-    .project-card img { height:200px; object-fit:cover; width:100%; }
-    .project-content { padding:1.5rem; display:flex; flex-direction:column; flex-grow:1; }
-    .project-tags { display:flex; flex-wrap:wrap; gap:.5rem; margin:1rem 0; }
-    .project-tags span {
-      font-size:.8rem; padding:.3rem .9rem; border-radius:50px;
-      background:linear-gradient(90deg,var(--primary-dark),var(--secondary-dark));
-      color:white;
-    }
-    .project-links { margin-top:auto; display:flex; gap:1rem; }
-    .project-links a { text-decoration:none; color:var(--primary-dark); font-weight:500; }
-
-    /* Timeline */
-    .timeline { position:relative; max-width:800px; margin:auto; }
-    .timeline::after {
-      content:''; position:absolute; width:4px; background:var(--primary-dark);
-      top:0; bottom:0; left:50%; margin-left:-2px;
-    }
-    .timeline-item { padding:20px; position:relative; width:50%; }
-    .timeline-item.left { left:0; }
-    .timeline-item.right { left:50%; }
-    .timeline-item::after {
-      content:''; position:absolute; width:24px; height:24px; top:30px;
-      border-radius:50%; background:linear-gradient(90deg,var(--primary-dark),var(--secondary-dark));
-      border:4px solid var(--bg-dark);
-    }
-    .timeline-item.left::after { right:-12px; }
-    .timeline-item.right::after { left:-12px; }
-    .timeline-content {
-      background:var(--card-dark); padding:1.5rem; border-radius:12px;
-      box-shadow:0 4px 12px rgba(0,0,0,0.2);
-    }
-    .timeline-content h3 { margin:0 0 .5rem 0; }
-    .timeline-content .date { font-size:.9rem; color:var(--text-muted-dark); }
-
-    /* Contact */
-    #contact p { margin-bottom:2rem; font-size:1.1rem; }
-  </style>
-</head>
-<body>
-<header>
-  <nav class="container">
-    <a href="#home" class="logo">Anujay Kalbhor</a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#certificates">Certificates</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><button id="theme-toggle"><i class="fas fa-moon"></i></button></li>
-    </ul>
-  </nav>
-</header>
-
-<main>
-  <!-- Hero -->
-  <section id="home">
-    <div id="particles-js"></div>
-    <div class="container hero-content">
-      <h1>Anujay Kalbhor</h1>
-      <p class="typing-text" id="typing-text"></p>
-      <p>Enthusiastic and detail-oriented PG-DBDA graduate passionate about transforming data into actionable insights. Skilled in Python, ML, Big Data, and AWS Cloud with hands-on AI/ML project experience.</p>
-      <div class="hero-links">
-        <a href="resume.pdf" class="btn" download>Download Resume</a>
-      </div>
-      <div class="hero-socials">
-        <a href="https://github.com/Anujaykalbhor" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-        <a href="https://linkedin.com/in/anujay-kalbhor" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        <a href="mailto:kalbhoranujay@gmail.com"><i class="fas fa-envelope"></i> kalbhoranujay@gmail.com</a>
-        <a href="tel:+918007101616"><i class="fas fa-phone"></i> +91 8007101616</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- About -->
-  <section id="about">
-    <div class="container">
-      <h2 class="section-title">About Me</h2>
-      <p style="text-align:center; max-width:800px; margin:auto;">
-        I am an enthusiastic PG-DBDA graduate with a foundation in Computer Engineering, passionate about data science and end-to-end AI/ML solutions. Recognized for problem-solving, adaptability, and teamwork, I thrive in environments where I can turn data into business impact.
-      </p>
-    </div>
-  </section>
-
-  <!-- Skills -->
-  <section id="skills">
-    <div class="container">
-      <h2 class="section-title">Technical Skills</h2>
-      <div class="skills-grid">
-        <div class="skill-category">
-          <h3>Programming</h3>
-          <ul class="skills-list">
-            <li>Python</li><li>SQL</li><li>Java</li><li>PySpark</li>
-          </ul>
-        </div>
-        <div class="skill-category">
-          <h3>Machine Learning & AI</h3>
-          <ul class="skills-list">
-            <li>NLP</li><li>Deep Learning</li><li>Transformers</li><li>Predictive Modeling</li><li>Sentiment Analysis</li>
-          </ul>
-        </div>
-        <div class="skill-category">
-          <h3>Big Data</h3>
-          <ul class="skills-list">
-            <li>Apache Spark</li><li>Databricks</li><li>MongoDB</li>
-          </ul>
-        </div>
-        <div class="skill-category">
-          <h3>Cloud & DevOps</h3>
-          <ul class="skills-list">
-            <li>AWS EC2</li><li>AWS S3</li><li>AWS IAM</li><li>CI/CD Pipelines</li><li>MLOps</li>
-          </ul>
-        </div>
-        <div class="skill-category">
-          <h3>Visualization</h3>
-          <ul class="skills-list">
-            <li>Power BI</li><li>Tableau</li><li>Real-time Dashboards</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects -->
-  <section id="projects">
-    <div class="container">
-      <h2 class="section-title">Featured Projects</h2>
-      <div class="projects-grid">
-        <div class="project-card">
-          <img src="golden-bull-and-bear-on-stock-data-chart-background-investing-stock-exchange-financial.webp" alt="Stock Prediction Project">
-          <div class="project-content">
-            <h3>Stock Market Price Prediction</h3>
-            <p>Developed an ML pipeline combining historical stock data with real-time news sentiment. Deployed on AWS EC2 with chatbot integration and Power BI dashboards.</p>
-            <div class="project-tags">
-              <span>Python</span><span>NLP</span><span>AWS</span><span>Power BI</span>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/Anujaykalbhor/Stock-prediction-using-news-sentiment.git" target="_blank"><i class="fab fa-github"></i> View Code</a>
-            </div>
-          </div>
-        </div>
-        <div class="project-card">
-          <img src="summarizer-step-three.webp" alt="Text Summarization Project">
-          <div class="project-content">
-            <h3>End-to-End Text Summarization</h3>
-            <p>Implemented extractive & abstractive text summarization using transformer models. CI/CD via GitHub Actions, deployed on AWS with a real-time Streamlit interface.</p>
-            <div class="project-tags">
-              <span>Python</span><span>Transformers</span><span>AWS</span><span>Streamlit</span>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/Anujaykalbhor/End-to-End-Text-Summarization-using-NLP-and-AWS-Deployment.git" target="_blank"><i class="fab fa-github"></i> View Code</a>
-            </div>
-          </div>
-        </div>
-        <div class="project-card">
-          <img src="pyspark.webp" alt="PySpark Project">
-          <div class="project-content">
-            <h3>Stock Data Analysis & Forecasting</h3>
-            <p>Analyzed Tata Motors stock data on Databricks using PySpark, generating forecasting insights and optimizing queries for performance.</p>
-            <div class="project-tags">
-              <span>PySpark</span><span>Databricks</span><span>Big Data</span>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/Anujaykalbhor/Stock-Market-Data-Analysis-and-Trend-Forecasting-using-PySpark.git" target="_blank"><i class="fab fa-github"></i> View Code</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Education -->
-  <section id="education">
-    <div class="container">
-      <h2 class="section-title">My Journey</h2>
-      <div class="timeline">
-        <div class="timeline-item left">
-          <div class="timeline-content">
-            <h3>PG-DBDA (Post Graduate Diploma in Big Data Analytics)</h3>
-            <p><strong>CDAC, Mumbai</strong></p>
-            <span class="date">Completed – 2025</span>
-          </div>
-        </div>
-        <div class="timeline-item right">
-          <div class="timeline-content">
-            <h3>B.E. Computer Engineering</h3>
-            <p><strong>PDEA’s COE, Savitribai Phule Pune University</strong></p>
-            <span class="date">2020 – 2024</span>
-            <p>Graduated with <strong>73.1%</strong></p>
-          </div>
-        </div>
-        <div class="timeline-item left">
-          <div class="timeline-content">
-            <h3>Class XII (Science)</h3>
-            <p><strong>Prithviraj Kapoor Junior College, Maharashtra State Board</strong></p>
-            <span class="date">Completed – 2020</span>
-            <p>Score: <strong>60.0%</strong></p>
-          </div>
-        </div>
-        <div class="timeline-item right">
-          <div class="timeline-content">
-            <h3>Class X</h3>
-            <p><strong>Prithviraj Kapoor Memorial High School, Maharashtra State Board</strong></p>
-            <span class="date">Completed – 2018</span>
-            <p>Score: <strong>73.6%</strong></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Certificates -->
   <section id="certificates">
     <div class="container">
       <h2 class="section-title">Certificates</h2>
-      <ul style="max-width:600px; margin:auto
+      <ul style="max-width:600px; margin:auto; list-style:none; line-height:1.8; font-size:1.1rem; text-align:center;">
+        <li><i class="fa fa-check-circle" style="color:var(--primary-dark); margin-right:8px;"></i>IBM SkillsBuild – Python for Programmers</li>
+        <li><i class="fa fa-check-circle" style="color:var(--primary-dark); margin-right:8px;"></i>CSRBOX – Data Analytics Internship Program</li>
+        <li><i class="fa fa-check-circle" style="color:var(--primary-dark); margin-right:8px;"></i>Fusion Software Institute – Data Science Course</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <p style="text-align:center;">Feel free to reach out for collaboration, opportunities, or discussions about Data Science & AI.</p>
+      <div class="hero-socials">
+        <a href="mailto:kalbhoranujay@gmail.com"><i class="fas fa-envelope"></i> kalbhoranujay@gmail.com</a>
+        <a href="tel:+918007101616"><i class="fas fa-phone"></i> +91 8007101616</a>
+        <a href="https://linkedin.com/in/anujay-kalbhor" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/Anujaykalbhor" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+<script>
+  // particles background
+  particlesJS("particles-js", {
+    particles: {
+      number: { value: 100 },
+      color: { value: "#00c6ff" },
+      shape: { type: "circle" },
+      opacity: { value: 0.5, random: true },
+      size: { value: 3, random: true },
+      line_linked: { enable: true, distance: 150, color: "#0072ff", opacity: 0.4, width: 1 },
+      move: { enable: true, speed: 2 }
+    }
+  });
+
+  // typing effect
+  const typingElement = document.getElementById("typing-text");
+  const textArray = ["Data Scientist", "Machine Learning Engineer", "AI Enthusiast", "Big Data Analyst"];
+  let arrayIndex = 0, charIndex = 0;
+  function type() {
+    if (charIndex < textArray[arrayIndex].length) {
+      typingElement.textContent += textArray[arrayIndex].charAt(charIndex);
+      charIndex++; setTimeout(type, 120);
+    } else { setTimeout(erase, 2000); }
+  }
+  function erase() {
+    if (charIndex > 0) {
+      typingElement.textContent = textArray[arrayIndex].substring(0, charIndex - 1);
+      charIndex--; setTimeout(erase, 50);
+    } else { arrayIndex = (arrayIndex + 1) % textArray.length; setTimeout(type, 500); }
+  }
+  document.addEventListener("DOMContentLoaded", type);
+
+  // theme toggle
+  const themeToggle = document.getElementById("theme-toggle");
+  const body = document.body;
+  themeToggle.addEventListener("click", () => {
+    body.classList.toggle("light-mode");
+    themeToggle.innerHTML = body.classList.contains("light-mode")
+      ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+  });
+</script>
+</body>
+</html>
